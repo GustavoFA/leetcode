@@ -32,6 +32,8 @@ class ValidAnagram:
             
             Time : O(nlogn + mlogm) | Space : O(1) or O(n+m)
         """
+        print('Using sort function ...')
+        
         if len(self.word_s) != len(self.word_t):
             return False
         
@@ -43,6 +45,8 @@ class ValidAnagram:
             
             Time : O(n+m) | Space : O(1)
         """
+        print('Using hash map ...')
+        
         if len(self.word_s) != len(self.word_t):
             return False
         
@@ -52,6 +56,27 @@ class ValidAnagram:
             countS[self.word_s[i]] = 1 + countS.get(self.word_s[i], 0)
             countT[self.word_t[i]] = 1 + countT.get(self.word_t[i], 0)
         return countS == countT
+
+    def isAnagram_array(self) -> bool:
+        """
+            Using hash with array.
+        """
+        print('Using Arrays to construct Hash table ...')
+        
+        if len(self.word_s) != len(self.word_t):
+            return False
+        
+        _count = [0] * 26
+        
+        for i in range(len(self.word_s)):
+            _count[ord(self.word_s[i]) - ord('a')] += 1
+            _count[ord(self.word_t[i]) - ord('a')] -= 1
+        
+        for k in _count:
+            if k != 0:
+                return False
+            
+        return True
 
 if __name__ == "__main__":
    

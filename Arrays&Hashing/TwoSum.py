@@ -47,6 +47,18 @@ class TwoSum:
             _diff = self._target - n
             if _diff in _indices and _indices[_diff] != i:
                 return [i, _indices[_diff]]
+            
+    def twoSumHasMap_(self) -> List[int]:
+        """
+            Hash map (fewer steps) -> Time : O(n) | Space : O(n)
+        """
+        _map = {}
+
+        for i, n in enumerate(self._nums):
+            _diff = self._target - n
+            if _diff in _map:
+                return [_map[_diff], i]
+            _map[n] = i
     
     def twoSum(self) -> List[int]:
         """
@@ -63,5 +75,5 @@ if __name__ == "__main__":
         _checker = TwoSum(nums=eval(input('Insert the array of integers:\n')), 
                             target=int(input('Insert the integer target:\n')))
         
-        print(_checker.twoSumSorting())
+        print(_checker.twoSumHasMap_())
     

@@ -10,14 +10,12 @@ class TwoSum:
     def __init__(self, nums: List[int], target: int):
         self._nums = nums
         self._target = target
-        
-        print(self._nums)
     
-    def twoSum(self) -> List[int]:
+    def twoSumHashMap(self) -> List[int]:
+        """ 
+            Hash map -> Time : O(n) | Space : O(n)
         """
-
-        """
-        print('Two sum function option.')
+        print('Two sum function using hash map')
         
         _indices = {}
 
@@ -29,14 +27,12 @@ class TwoSum:
             if _diff in _indices and _indices[_diff] != i:
                 return [i, _indices[_diff]]
     
-    def twoSum_forced(self) -> List[int]:
+    def twoSum(self) -> List[int]:
         """
-        
+            Brute force -> Time : O(n²) | Space : O(1)
         """
         for i in range(len(self._nums)):
             for j in range(i+1, len(self._nums)):
-                if i == j:
-                    continue
                 if self._nums[i] + self._nums[j] == self._target:
                     return [i, j]
     

@@ -10,6 +10,27 @@ class TwoSum:
     def __init__(self, nums: List[int], target: int):
         self._nums = nums
         self._target = target
+
+    def twoSumSorting(self) -> List[int]:
+        """
+            Sorting mode -> Time : O(nlogn) | Space : O(n)
+        """
+        mm = []
+        for i, num in enumerate(self._nums):
+            mm.append([num, i])
+
+        mm.sort()
+        i, j = 0, len(self._nums) - 1
+
+        while i < j:
+            _buffer = mm[i][0] + mm[j][0]
+            if _buffer == self._target:
+                return[min(mm[i][1], mm[j][1]),
+                       max(mm[i][1], mm[j][1])]
+            elif _buffer < self._target:
+                i += 1
+            else:
+                j -= 1
     
     def twoSumHashMap(self) -> List[int]:
         """ 
@@ -37,10 +58,10 @@ class TwoSum:
                     return [i, j]
     
 if __name__ == "__main__":
-    print('The code has been started!')
-    _checker = TwoSum(nums=eval(input('Insert the array of integers:\n')), 
-                        target=int(input('Insert the integer target:\n')))
     
-    ret = _checker.twoSum_forced()
+    while True:
+        _checker = TwoSum(nums=eval(input('Insert the array of integers:\n')), 
+                            target=int(input('Insert the integer target:\n')))
+        
+        print(_checker.twoSumSorting())
     
-    print(ret)
